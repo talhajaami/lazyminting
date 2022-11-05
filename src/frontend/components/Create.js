@@ -177,7 +177,7 @@ const Create = ({ marketplace, nft }) => {
                 />
                 <div className='d-grid px-0'>
                   <Button onClick={createNFT} variant='primary' size='lg'>
-                    Lazy Mint
+                    MINT
                   </Button>
                 </div>
               </Row>

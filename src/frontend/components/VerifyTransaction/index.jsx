@@ -97,7 +97,7 @@ const VerifyMessage = ({ nftImage, nftName, desc, categ, tokenUri, signat, signe
         <Card.Footer>
           <div className='d-grid'>
             <Button onClick={(e) => handleVerification(e)} variant="primary" size="lg">
-              MINT
+              BUY
             </Button>
           </div>
         </Card.Footer>
