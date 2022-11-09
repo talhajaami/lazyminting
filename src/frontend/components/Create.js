@@ -38,7 +38,7 @@ const Create = () => {
     if (typeof file !== 'undefined') {
       try {
         const result = await client.add(file)
-        setImage(`https://<>/ipfs/${result.path}`)
+        setImage(`https://https://marketplace-testing.infura-ipfs.io/ipfs/${result.path}`)
       } catch (error) {
         console.log('ipfs image upload error: ', error)
       }
@@ -65,7 +65,7 @@ const Create = () => {
     const address = await signer.getAddress()
     setSignerAddress(address)
     // paste DEDICATED GATEWAY SUBDOMAIN from Infura IPFS
-    const uri = `https://<>/ipfs/${result.path}`
+    const uri = `https://https://marketplace-testing.infura-ipfs.io/ipfs/${result.path}`
     const signingDomain = async () => {
       const domain = {
         name: 'LazyMint-Voucher',
