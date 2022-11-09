@@ -1,18 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navigation from './Navbar'
-import Home from './Home.js'
 import Create from './Create.js'
-import MyListedItems from './MyListedItems.js'
-import MyPurchases from './MyPurchases.js'
-import Deploy from './Deploy.js'
-import VerifyMessage from './VerifyTransaction'
-import SignMessage from './SignTransaction'
-import MarketplaceAbi from '../contractsData/KwikTrustNFT.json'
-import MarketplaceAddress from '../contractsData/KwikTrustNFT-address.json'
-import NFTAbi from '../contractsData/KwikTrustNFT.json'
-import NFTAddress from '../contractsData/KwikTrustNFT-address.json'
-import Factory from '../contractsData/KwikTrustNFT.json'
-import FactoryAddress from '../contractsData/KwikTrustNFT-address.json'
+import NFTAbi from '../contractsData/LazyMinting.json'
+import NFTAddress from '../contractsData/LazyMinting-address.json'
 import { useState } from 'react'
 import { ethers } from 'ethers'
 import { Spinner } from 'react-bootstrap'
@@ -23,8 +13,6 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [account, setAccount] = useState(null)
   const [nft, setNFT] = useState({})
-  const [marketplace, setMarketplace] = useState({})
-  const [factory, setfactory] = useState({})
   // MetaMask Login/Connect
   const web3Handler = async () => {
     const accounts = await window.ethereum.request({
@@ -47,16 +35,7 @@ function App() {
     loadContracts(signer)
   }
   const loadContracts = async (signer) => {
-    // Get deployed copies of contracts
-    const marketplace = new ethers.Contract(
-      MarketplaceAddress.address,
-      MarketplaceAbi.abi,
-      signer
-    )
-    setMarketplace(marketplace)
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
-    const factoryAddr = new ethers.Contract(FactoryAddress.address, Factory.abi, signer)
-    setfactory(factoryAddr)
     setNFT(nft)
     setLoading(false)
   }
@@ -84,54 +63,8 @@ function App() {
             <Routes>
               <Route
                 path='/'
-                element={<Home marketplace={marketplace} nft={nft} />}
+                element={<Create />}
               />
-              <Route
-                path='/create'
-                element={<Create marketplace={marketplace} nft={nft} />}
-              />
-              <Route
-                path='/my-listed-items'
-                element={
-                  <MyListedItems
-                    marketplace={marketplace}
-                    nft={nft}
-                    account={account}
-                  />
-                }
-              />
-              <Route
-                path='/my-purchases'
-                element={
-                  <MyPurchases
-                    marketplace={marketplace}
-                    nft={nft}
-                    factory={factory}
-                    account={account}
-                  />
-                }
-              />
-              <Route
-                path='/deploy'
-                element={
-                  <Deploy
-                    marketplace={marketplace}
-                    nft={nft}
-                    account={account}
-                  />
-                }
-              />
-              <Route
-                path='/signmessage'
-                element={
-                  <SignMessage
-                  // connButtonText={connButtonText}
-                  // defaultAccount={account}
-                  // connectWalletHandler={connectWalletHandler}
-                  />
-                }
-              />
-              <Route path='/verify' element={<VerifyMessage />} />
             </Routes>
           )}
         </div>

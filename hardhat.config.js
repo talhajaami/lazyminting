@@ -15,12 +15,9 @@ module.exports = {
   defaultNetwork: 'mumbai',
   networks: {
     hardhat: {},
-    rinkeby: {
-      url: 'https://rinkeby.infura.io/v3/093b4fa91bff4c14b88d04dccdb94bee',
-      accounts: [PRIVATE_KEY],
-    },
     goerli: {
-      url: 'https://goerli.infura.io/v3/093b4fa91bff4c14b88d04dccdb94bee',
+      //paste Infure RPC URL here 
+      url: '',
       accounts: [PRIVATE_KEY],
     },
     mumbai: {
@@ -50,12 +47,8 @@ module.exports = {
   mocha: {
     timeout: 40000,
   },
-  // etherscan: {
-  //   apiKey: 'ZZNYA7JY49DW31IFZYR58QQU37SBF7ZXPS', // for ethereum
-  // },
   etherscan: {
-    apiKey: {
-      polygonMumbai: 'U7YM1CMSDN917MKWGUJCY178JUS21YZWKC'
-    }
-  }
+    // paste etherscan API key here
+    apiKey: '', // for ethereum
+  },
 }
