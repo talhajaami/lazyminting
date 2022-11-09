@@ -65,7 +65,7 @@ const Create = () => {
     const address = await signer.getAddress()
     setSignerAddress(address)
     // paste DEDICATED GATEWAY SUBDOMAIN from Infura IPFS
-    const uri = `https://https://marketplace-testing.infura-ipfs.io/ipfs/${result.path}`
+    const uri = `https://marketplace-testing.infura-ipfs.io/ipfs/${result.path}`
     const signingDomain = async () => {
       const domain = {
         name: 'LazyMint-Voucher',
