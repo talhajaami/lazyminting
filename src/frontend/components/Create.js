@@ -38,7 +38,7 @@ const Create = () => {
     if (typeof file !== 'undefined') {
       try {
         const result = await client.add(file)
-        setImage(`marketplace-testing.infura-ipfs.io/ipfs/${result.path}`)
+        setImage(`https://marketplace-testing.infura-ipfs.io/ipfs/${result.path}`)
       } catch (error) {
         console.log('ipfs image upload error: ', error)
       }
@@ -100,7 +100,7 @@ const Create = () => {
 
     const sig = {
       image,
-      signerAddress,
+      signerAddress: address,
       title,
       description,
       userId,
